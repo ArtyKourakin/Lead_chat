@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const isGithubActions = process.env.GITHUB_ACTIONS === "true";
-const repositoryName = process.env.GITHUB_REPOSITORY?.replace(/.*\//, "") ?? "";
+const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -10,8 +10,9 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  // GitHub Pages serves project sites under /<repo-name>
+  // basePath is enough for Next static export here.
   basePath: isGithubActions && repositoryName ? `/${repositoryName}` : "",
-  assetPrefix: isGithubActions && repositoryName ? `/${repositoryName}/` : undefined,
 };
 
 export default nextConfig;

@@ -35,5 +35,5 @@ npm run build
 ## Почему это работает на GitHub Pages
 
 - `next.config.ts` настроен в static export режиме (`output: "export"`).
-- Для GitHub Actions автоматически подставляются `basePath` и `assetPrefix` из имени репозитория, чтобы ассеты и маршруты работали на URL вида:
+- Для GitHub Actions автоматически подставляется `basePath` из имени репозитория, чтобы маршруты и ассеты корректно открывались на URL вида:
   `https://<username>.github.io/<repo-name>/`.
